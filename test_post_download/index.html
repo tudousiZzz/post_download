@@ -1,0 +1,54 @@
+ <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <meta name="renderer" content="webkit|ie-comp|ie-stand">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+            <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+            <meta http-equiv="Cache-Control" content="no-siteapp"/>
+            </head>
+            <body>
+            <input type="button" id="clickme" value="clickme" />
+            </body>
+             <script type="text/javascript">
+             function postExcelFile(params, url) { //params是post请求需要的参数，url是请求url地址
+                var form = document.createElement("form");
+                form.style.display = 'none';
+                form.action = url;
+                form.method = "post";
+                document.body.appendChild(form);
+ 
+                for(var key in params){
+                  var input = document.createElement("input");
+                  input.type = "hidden";
+                  input.name = key;
+                  input.value = params[key];
+                  form.appendChild(input);
+                }
+ 
+                form.submit();
+                form.remove();
+              }
+              //点击导出按钮导出excel表格
+              clickme.onclick = function() {
+                var params = {"FileType" : "excel"};
+                //params.queryDateEnd='20180709';
+                //params.queryDate='20180709';
+                //params.productId=0;
+                // params.chnMerchant='你好你好';
+                //params.chnAttr='你好你好';
+//params.chnID='';
+                //postExcelFile(params, "http://localhost:8080/demo/export");
+ 
+                // params.queryDate='2018-08-16';
+                // params.productId=0;
+                // params.channel1Id='12924,12925,12926';
+                // params.channel2Id='332584,12927,333950,314216';
+                //params.channel3Id='332585,12938,333951';
+                //params.channel4Id='335273,332081,336699';
+                //params.chnID='201600010000758,202400000000006';
+                  postExcelFile(params, "http://localhost:8080/demo/export");
+              }
+ 
+             </script>
+            </html>
